@@ -11,6 +11,7 @@
 - 동기 : caller는 callee의 결과에 관심이 있다. (caller는 결과를 이용해서 action을 수행한다.)
 - 비동기 : caller는 callee의 결과에 관심이 없다. (callee는 결과를 이용해서 callback을 수행한다.)
 
+# 02. 함수 관점에서 blocking과 non-blocking 차이 
 ## Blocking과 Non-Blocking이란?
 ### 함수 호출 관점
 - Blocking : callee 를 호출한 후, callee가 완료되기 전까지 caller가 아무것도 할 수 없다.
@@ -38,6 +39,7 @@
   - caller는 자기 할일을 할 수 있다. (Non-Blocking)
   - 결과는 callee가 처리한다. (비동기)
 
+# 03. IO 관점에서 blocking과 non-blocking의 차이
 ## I/O 관점에서 Blocking, Non-Blocking
 - Blocking의 종류
   - blocking은 thread가 오랜 시간 일을 하거나 대기하는 경우 발생한다.
