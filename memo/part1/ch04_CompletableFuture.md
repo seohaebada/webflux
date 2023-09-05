@@ -42,3 +42,18 @@
 - newWorkStealingPool : work steal 알고리즘을 사용하는 ForkJoinPool을 생성
 
 # 02. CompletionStage 인터페이스
+- 50개에 가까운 연산자들을 활용하여 비동기 task들을 실행하고 값을 변형하는 등 chaining을 이요한 조합 가능
+- 에러를 처리하기 위한 콜백 제공 
+
+## ForkJoinPool - thread pool
+- ForkJoinPool의 기본 size = 할당된 cpu 코어 - 1
+- 데몬쓰레드. main 쓰레드가 종료되면 즉각적으로 종료 
+- Task를 fork를 통해서 subtask로 잘개 나누고, 이 잘개 나눠진 subtask를 threadpool에서 균등하게 분배된다.
+  - 결과 생성 : join을 통해서 최종적인 결과를 만든다.
+- thenAccept() vs thenAcceptAsync() : done 상태에서, running 상태에서의 차이 
+- thenApply() vs thenApplyAsync()
+- thenCompose() vs thenComposeAsync()
+- thenRun() vs thenRunAsync()
+- execeptionally 
+
+# 03. CompletableFuture 클래스 
