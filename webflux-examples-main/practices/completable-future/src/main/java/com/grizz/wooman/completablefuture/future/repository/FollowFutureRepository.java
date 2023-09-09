@@ -18,11 +18,13 @@ public class FollowFutureRepository {
     public CompletableFuture<Long> countByUserId(String userId) {
         return CompletableFuture.supplyAsync(() -> {
             log.info("FollowRepository.countByUserId: {}", userId);
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
             return userFollowCountMap.getOrDefault(userId, 0L);
         });
     }

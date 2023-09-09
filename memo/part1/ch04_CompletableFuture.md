@@ -56,4 +56,23 @@
 - thenRun() vs thenRunAsync()
 - execeptionally 
 
-# 03. CompletableFuture 클래스 
+# 03. CompletableFuture 클래스
+## CompletableFuture 제공 메서드
+- 전부 다른 쓰레드에서 동작 
+- supplyAsync()
+- runAsync()
+- complete()
+  - CompletableFuture가 완료되지 않았다면 주어진 값으로 채운다. (complete(2);)
+  - 완료되지 않았더라도 complete()를 시킬 수 있는 것. (이미 작업이 완료되었다면 작업 완료 시점의 값을 유지, complete로 값을 바꿔도 바뀌지않음)
+  - complete에 의해서 상태가 바뀌었다면 true, 아니라면 false를 리턴한다.
+- isCompletedExceptionally()
+- allOf()
+  - 여러 completableFuture를 모아서 하나의 completableFuture로 변환할 수 있다.
+- anyOf()
+  - 제일 먼저 끝낸 작업의 결과값을 리턴
+
+## CompletableFuture의 한계
+- 지연 로딩 기능을 제공하지 않는다.
+  - CompletableFuture를 반환하는 함수를 호출시 즉시 작업이 실행된다.
+- 지속적으로 생성되는 데이터를 처리하기 어렵다.
+  - CompletableFuturue에서 데이터를 반환하고 나면 다시 다른 값을 전달하기 어렵다.

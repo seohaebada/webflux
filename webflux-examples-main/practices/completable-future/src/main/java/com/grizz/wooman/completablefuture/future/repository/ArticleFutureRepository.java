@@ -24,11 +24,13 @@ public class ArticleFutureRepository {
     public CompletableFuture<List<ArticleEntity>> findAllByUserId(String userId) {
         return CompletableFuture.supplyAsync(() -> {
             log.info("ArticleRepository.findAllByUserId: {}", userId);
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
             return articleEntities.stream()
                     .filter(articleEntity -> articleEntity.getUserId().equals(userId))
                     .collect(Collectors.toList());

@@ -27,16 +27,21 @@ public class UserFutureService {
     @SneakyThrows
     public CompletableFuture<Optional<User>> getUserById(String id) {
         return userRepository.findById(id)
+                // CompletableFuture 를 리턴하는 getUser()
+                // 중첩되어있는 CompletableFuture의 내부 내용을 다음 파이프라인에 전달하기 위함
                 .thenComposeAsync(this::getUser);
     }
 
     @SneakyThrows
     private CompletableFuture<Optional<User>> getUser(Optional<UserEntity> userEntityOptional) {
         if (userEntityOptional.isEmpty()) {
+            // valu를 바로 내린다
             return CompletableFuture.completedFuture(Optional.empty());
         }
 
         var userEntity = userEntityOptional.get();
+
+        // 각각의 ForkJoinPool의 쓰레드 3개로 동시 실행
 
         var imageFuture = imageRepository.findById(userEntity.getProfileImageId())
                 .thenApplyAsync(imageEntityOptional ->

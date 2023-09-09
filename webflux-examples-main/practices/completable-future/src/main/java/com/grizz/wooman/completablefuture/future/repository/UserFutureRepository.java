@@ -22,12 +22,15 @@ public class UserFutureRepository {
     public CompletableFuture<Optional<UserEntity>> findById(String userId) {
         return CompletableFuture.supplyAsync(() -> {
             log.info("UserRepository.findById: {}", userId);
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
             var user = userMap.get(userId);
+
             return Optional.ofNullable(user);
         });
     }

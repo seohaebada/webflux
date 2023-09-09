@@ -31,10 +31,13 @@ public class UserServiceBlockingTest {
         );
     }
 
+    /**
+     * 1초 (userRepository만 조회했기때문)
+     */
     @Test
     void getUserEmptyIfInvalidUserIdIsGiven() {
         // given
-        String userId = "invalid_user_id";
+        String userId = "invalid_user_id"; // 없는 유저 ID 셋팅
 
         // when
         Optional<User> user = userBlockingService.getUserById(userId);
@@ -43,10 +46,15 @@ public class UserServiceBlockingTest {
         assertTrue(user.isEmpty());
     }
 
+    /**
+     * 정상적인 케이스
+     * 4초
+     * - user, image, article, follow
+     */
     @Test
     void testGetUser() {
         // given
-        String userId = "1234";
+        String userId = "1234"; // 존재하는 유저 아이디
 
         // when
         Optional<User> optionalUser = userBlockingService.getUserById(userId);

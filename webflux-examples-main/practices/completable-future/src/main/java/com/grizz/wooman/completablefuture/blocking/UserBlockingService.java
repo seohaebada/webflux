@@ -12,6 +12,9 @@ import lombok.RequiredArgsConstructor;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * 동기적으로 구현되어있는 코드
+ */
 @RequiredArgsConstructor
 public class UserBlockingService {
     private final UserRepository userRepository;
@@ -20,18 +23,22 @@ public class UserBlockingService {
     private final FollowRepository followRepository;
 
     public Optional<User> getUserById(String id) {
-        return userRepository.findById(id)
+        // get userInfo
+        return userRepository.findById(id) // 유저가 존재한다면
                 .map(user -> {
+                    // imageEntity to image
                     var image = imageRepository.findById(user.getProfileImageId())
                             .map(imageEntity -> {
                                 return new Image(imageEntity.getId(), imageEntity.getName(), imageEntity.getUrl());
                             });
 
+                    // articleEntity to article
                     var articles = articleRepository.findAllByUserId(user.getId())
                             .stream().map(articleEntity ->
                                     new Article(articleEntity.getId(), articleEntity.getTitle(), articleEntity.getContent()))
                             .collect(Collectors.toList());
 
+                    // userId count
                     var followCount = followRepository.countByUserId(user.getId());
 
                     return new User(
