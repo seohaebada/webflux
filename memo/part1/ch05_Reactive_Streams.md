@@ -46,4 +46,16 @@
     - event-driven은 message의 형태를 event로 제한
     - completion, error 심지어 값 까지도 이벤트의 형태로 전달 
     - 따라서 reactive programming은 reactive manifesot의 원칙을 지킨다.
-- 
+    
+
+# 04. Reactive Streams
+- 구조
+  - Publisher : 데이터 혹은 이벤트를 제공함
+  - Subscriber : 데이터 혹은 이벤트를 제공받음 
+  - Subscrition : 데이터 흐름 조절
+
+# 05. Cold & hot Publisher 구현
+- 실습
+
+# 06. Reactive streams 정리
+
