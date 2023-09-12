@@ -12,7 +12,7 @@ public class MaybeEmptyValueExample {
 
     private static Maybe<Integer> maybeGetItem() {
         return Maybe.create(maybeEmitter -> {
-            maybeEmitter.onComplete();
+            maybeEmitter.onComplete(); // complete()만 호출
         });
     }
 }

@@ -12,7 +12,7 @@ public class SingleNullExample {
 
     private static Single<Integer> getItem() {
         return Single.create(singleEmitter -> {
-            singleEmitter.onSuccess(null);
+            singleEmitter.onSuccess(null); // 에러 발생시킴
         });
     }
 }

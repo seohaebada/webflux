@@ -8,6 +8,7 @@ import java.util.List;
 @Slf4j
 public class ObservableExample {
     public static void main(String[] args) {
+        // 배압 조절 불가능
         getItems()
                 .subscribe(new SimpleObserver());
     }

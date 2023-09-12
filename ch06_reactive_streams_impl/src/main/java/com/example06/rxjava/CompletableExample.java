@@ -13,7 +13,7 @@ public class CompletableExample {
     private static Completable getCompletion() {
         return Completable.create(completableEmitter -> {
             Thread.sleep(1000);
-            completableEmitter.onComplete();
+            completableEmitter.onComplete(); // 값이 아닌 사건을 전달 
         });
     }
 }

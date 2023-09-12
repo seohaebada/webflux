@@ -11,6 +11,7 @@ public class FlowableContinuousRequestSubscriberExample {
     public static void main(String[] args) {
         log.info("start main");
         getItems()
+                // 1개씩 처리 (backPressure)
                 .subscribe(new ContinuousRequestSubscriber<>());
         log.info("end main");
     }
