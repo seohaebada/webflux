@@ -1,0 +1,42 @@
+plugins {
+  id 'java'
+  id 'war'
+}
+
+group 'com'
+version '1.0-SNAPSHOT'
+
+repositories {
+  mavenCentral()
+}
+
+ext {
+  junitVersion = '5.9.2'
+}
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+tasks.withType(JavaCompile) {
+  options.encoding = 'UTF-8'
+}
+
+dependencies {
+  compileOnly('jakarta.enterprise:jakarta.enterprise.cdi-api:3.0.0')
+  compileOnly('jakarta.ws.rs:jakarta.ws.rs-api:3.0.0')
+  compileOnly('jakarta.servlet:jakarta.servlet-api:5.0.0')
+  compileOnly('org.projectlombok:lombok:1.18.28')
+  annotationProcessor('org.projectlombok:lombok:1.18.28')
+  implementation('org.slf4j:slf4j-api:1.7.32')
+  implementation('ch.qos.logback:logback-classic:1.2.9')
+  implementation('io.reactivex.rxjava3:rxjava:3.1.6')
+  implementation('org.reactivestreams:reactive-streams:1.0.4')
+  implementation('io.smallrye.reactive:mutiny:2.3.1')
+  implementation('io.projectreactor:reactor-core:3.5.9')
+
+  testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+  testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+useJUnitPlatform()}
