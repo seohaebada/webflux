@@ -13,7 +13,7 @@ public class FluxCompleteExample {
 
     private static Flux<Integer> getItems() {
         return Flux.create(fluxSink -> {
-            fluxSink.complete();
+            fluxSink.complete(); // complete 전달
         });
     }
 }

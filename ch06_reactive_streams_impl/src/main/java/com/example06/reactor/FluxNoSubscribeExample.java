@@ -7,7 +7,7 @@ import reactor.core.publisher.Flux;
 public class FluxNoSubscribeExample {
     public static void main(String[] args) {
         log.info("start main");
-        getItems();
+        getItems(); // subscribe 하지않으면 아무일도 일어나지 않는다.
         log.info("end main");
     }
 

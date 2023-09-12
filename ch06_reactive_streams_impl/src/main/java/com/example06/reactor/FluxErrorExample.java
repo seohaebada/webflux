@@ -16,7 +16,7 @@ public class FluxErrorExample {
             fluxSink.next(0);
             fluxSink.next(1);
             var error = new RuntimeException("error in flux");
-            fluxSink.error(error);
+            fluxSink.error(error); // 에러 전달
         });
     }
 }

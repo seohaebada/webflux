@@ -1,6 +1,6 @@
 package com.example06.rxjava;
 
-import com.example06..reactor.ContinuousRequestSubscriber;
+import com.example06.reactor.ContinuousRequestSubscriber;
 import io.reactivex.rxjava3.core.Flowable;
 import lombok.extern.slf4j.Slf4j;
 

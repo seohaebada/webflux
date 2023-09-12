@@ -15,7 +15,7 @@ public class ContinuousRequestSubscriber<T>
     public void onSubscribe(Subscription s) {
         this.subscription = s;
         log.info("subscribe");
-        s.request(count);
+        s.request(count); // 개수만큼 요청
         log.info("request: {}", count);
     }
 
@@ -25,6 +25,7 @@ public class ContinuousRequestSubscriber<T>
         log.info("item: {}", t);
 
         Thread.sleep(1000);
+        // 1개를 또 호출
         subscription.request(1);
         log.info("request: {}", count);
     }
