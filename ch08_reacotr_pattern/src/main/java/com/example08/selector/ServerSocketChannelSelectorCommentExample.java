@@ -1,4 +1,4 @@
-package com.example07.selector;
+package com.example08.selector;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.example07.selector;
+package com.example08.selector;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -12,9 +12,14 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 
 @Slf4j
-public class ServerSocketChannelSimpleExample {
+public class ServerSocketChannelSelectorExample {
     @SneakyThrows
     public static void main(String[] args) throws IOException {
+        log.info("start main");
+
+        Long start = null;
+
+        var count = 0;
         try (var serverChannel = ServerSocketChannel.open();
              var selector = Selector.open();
         ) {
@@ -25,24 +30,31 @@ public class ServerSocketChannelSimpleExample {
 
             while (true) {
                 selector.select(); // 준비될때까지 blocking
-                var selectedKeys = selector.selectedKeys().iterator();
-                while (selectedKeys.hasNext()) {
-                    var key = selectedKeys.next();
-                    selectedKeys.remove();
+                if (start == null) start = System.currentTimeMillis();
+
+                var selectedKeys = selector.selectedKeys();
+                for (var key : selectedKeys) {
+                    if (!key.isValid()) return;
 
                     if (key.isAcceptable()) {
                         var clientSocket = ((ServerSocketChannel) key.channel()).accept();
                         clientSocket.configureBlocking(false);
                         clientSocket.register(selector, SelectionKey.OP_READ);
                     }
-                    else if (key.isReadable()) {
+                    if (key.isReadable()) {
                         var clientSocket = (SocketChannel) key.channel();
                         var requestBody = getRequestBody(clientSocket);
                         sendResponse(clientSocket, requestBody);
+                        count++;
                     }
                 }
+                if (count == 1000) break;
+                selectedKeys.clear();
             }
         }
+
+        var duration = System.currentTimeMillis() - start;
+        log.info("duration: {}", duration);
     }
 
     private static String getRequestBody(SocketChannel clientSocket) throws IOException {
