@@ -3,7 +3,7 @@ package com.example04.completablefuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class FutureHelper {
+public class p083_FutureHelper {
     /**
      * 새로운 스레드를 생성하여 1을 반환
      * @return

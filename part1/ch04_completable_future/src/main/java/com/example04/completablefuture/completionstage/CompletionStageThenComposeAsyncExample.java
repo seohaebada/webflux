@@ -9,13 +9,13 @@ public class CompletionStageThenComposeAsyncExample {
     public static void main(String[] args)
             throws InterruptedException {
         log.info("start main");
-        CompletionStage<Integer> stage = Helper.completionStage();
+        CompletionStage<Integer> stage = p099_Helper.completionStage();
         stage.thenComposeAsync(value -> {
-            var next = Helper.addOne(value);
+            var next = p099_Helper.addOne(value);
             log.info("in thenComposeAsync: {}", next);
             return next;
         }).thenComposeAsync(value -> {
-            var next = Helper.addResultPrefix(value);
+            var next = p099_Helper.addResultPrefix(value);
             log.info("in thenComposeAsync2: {}", next);
             return next;
         }).thenAcceptAsync(value -> {

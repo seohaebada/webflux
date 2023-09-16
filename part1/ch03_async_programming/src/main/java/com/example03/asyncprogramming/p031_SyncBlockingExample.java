@@ -3,7 +3,7 @@ package com.example03.asyncprogramming;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class SyncBlockingSimpleExample {
+public class p031_SyncBlockingExample {
     public static void main(String[] args) {
         log.info("Start main");
         var result = getResult();

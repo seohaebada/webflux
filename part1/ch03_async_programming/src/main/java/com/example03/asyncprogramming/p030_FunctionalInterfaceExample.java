@@ -8,7 +8,7 @@ import java.util.function.Consumer;
  * 함수형 인터페이스는 호출한 쓰레드에서 실행된다.
  */
 @Slf4j
-public class FunctionalInterfaceExample {
+public class p030_FunctionalInterfaceExample {
     public static void main(String[] args) {
         var consumer = getConsumer();
         consumer.accept(1);

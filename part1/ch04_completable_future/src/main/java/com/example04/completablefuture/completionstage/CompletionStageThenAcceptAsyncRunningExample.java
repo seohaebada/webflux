@@ -9,7 +9,7 @@ public class CompletionStageThenAcceptAsyncRunningExample {
     public static void main(String[] args)
             throws InterruptedException {
         log.info("start main");
-        CompletionStage<Integer> stage = Helper.runningStage();
+        CompletionStage<Integer> stage = p099_Helper.runningStage();
         stage.thenAcceptAsync(i -> {
             log.info("{} in thenAcceptAsync", i);
         }).thenAcceptAsync(i -> {

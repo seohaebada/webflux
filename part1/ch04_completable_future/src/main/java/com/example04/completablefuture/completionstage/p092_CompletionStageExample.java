@@ -3,10 +3,10 @@ package com.example04.completablefuture.completionstage;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CompletionStageExample {
+public class p092_CompletionStageExample {
     public static void main(String[] args) throws InterruptedException {
         // chaining
-        Helper.completionStage()
+        p099_Helper.completionStage()
                 .thenApplyAsync(value -> {
                     log.info("thenApplyAsync: {}", value);
                     return value + 1;

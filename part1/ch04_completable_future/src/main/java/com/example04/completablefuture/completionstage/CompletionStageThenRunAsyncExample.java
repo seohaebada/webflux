@@ -9,7 +9,7 @@ public class CompletionStageThenRunAsyncExample {
     public static void main(String[] args)
             throws InterruptedException {
         log.info("start main");
-        CompletionStage<Integer> stage = Helper.completionStage();
+        CompletionStage<Integer> stage = p099_Helper.completionStage();
         stage.thenRunAsync(() -> {
             log.info("in thenRunAsync");
         }).thenRunAsync(() -> {

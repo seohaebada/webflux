@@ -5,11 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.CompletionStage;
 
 @Slf4j
-public class CompletionStageThenAcceptExample {
+public class p100_CompletionStageThenAcceptExample {
     public static void main(String[] args)
             throws InterruptedException {
         log.info("start main");
-        CompletionStage<Integer> stage = Helper.finishedStage();
+        CompletionStage<Integer> stage = p099_Helper.finishedStage();
         stage.thenAccept(i -> {
             log.info("{} in thenAccept", i);
         }).thenAccept(i -> {

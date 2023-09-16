@@ -3,10 +3,10 @@ package com.example04.completablefuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-public class FutureGetExample {
+public class p085_FutureGetExample {
     public static void main(String[] args)
             throws InterruptedException, ExecutionException {
-        Future future = FutureHelper.getFuture();
+        Future future = p083_FutureHelper.getFuture();
         assert !future.isDone();
         assert !future.isCancelled();
 

@@ -2,37 +2,29 @@ package com.example03.asyncprogramming;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.function.Consumer;
 
 @Slf4j
-public class SyncNonBlockingExampleRunner {
-    public static void main(String[] args)
-            throws InterruptedException, ExecutionException {
+public class p048_AsyncNonBlockingExample {
+    public static void main(String[] args) {
         log.info("Start main");
-
-        var count = 1;
-
-        Future<Integer> result = getResult();
-        while (!result.isDone()) {
-            log.info("Waiting for result, count: {}", count++);
-            Thread.sleep(100);
-        }
-
-        var nextValue = result.get() + 1;
-        assert nextValue == 1;
-
+        getResult(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) {
+                var nextValue = integer + 1;
+                assert nextValue == 1;
+            }
+        });
         log.info("Finish main");
     }
 
-    public static Future<Integer> getResult() {
+    public static void getResult(Consumer<Integer> callback) {
         var executor = Executors.newSingleThreadExecutor();
         try {
-            return executor.submit(new Callable<Integer>() {
+            executor.submit(new Runnable() {
                 @Override
-                public Integer call() throws Exception {
+                public void run() {
                     log.info("Start getResult");
                     try {
                         Thread.sleep(1000);
@@ -42,7 +34,7 @@ public class SyncNonBlockingExampleRunner {
 
                     var result = 0;
                     try {
-                        return result;
+                        callback.accept(result);
                     } finally {
                         log.info("Finish getResult");
                     }

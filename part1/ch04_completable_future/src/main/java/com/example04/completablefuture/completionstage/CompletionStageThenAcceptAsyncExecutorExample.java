@@ -14,7 +14,7 @@ public class CompletionStageThenAcceptAsyncExecutorExample {
         var fixed = Executors.newFixedThreadPool(10);
 
         log.info("start main");
-        CompletionStage<Integer> stage = Helper.completionStage();
+        CompletionStage<Integer> stage = p099_Helper.completionStage();
         stage.thenAcceptAsync(i -> {
             log.info("{} in thenAcceptAsync", i);
         }, fixed).thenAcceptAsync(i -> {

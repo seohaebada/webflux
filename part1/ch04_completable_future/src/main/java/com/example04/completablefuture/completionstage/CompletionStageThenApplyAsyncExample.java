@@ -8,7 +8,7 @@ import java.util.concurrent.CompletionStage;
 public class CompletionStageThenApplyAsyncExample {
     public static void main(String[] args)
             throws InterruptedException {
-        CompletionStage<Integer> stage = Helper.completionStage();
+        CompletionStage<Integer> stage = p099_Helper.completionStage();
         stage.thenApplyAsync(value -> {
             var next = value + 1;
             log.info("in thenApplyAsync: {}", next);

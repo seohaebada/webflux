@@ -7,7 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
 @Slf4j
-public class Helper {
+public class p099_Helper {
     @SneakyThrows
     public static CompletionStage<Integer> finishedStage() {
         var future = CompletableFuture.supplyAsync(() -> {

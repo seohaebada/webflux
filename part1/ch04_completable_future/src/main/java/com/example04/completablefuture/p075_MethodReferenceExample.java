@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 @Slf4j
-public class MethodReferenceExample {
+public class p075_MethodReferenceExample {
     @RequiredArgsConstructor
     public static class Person {
         @Getter
@@ -25,7 +25,7 @@ public class MethodReferenceExample {
 
     public static void main(String[] args) {
         var target = new Person("f");
-        Consumer<String> staticPrint = MethodReferenceExample::print;
+        Consumer<String> staticPrint = p075_MethodReferenceExample::print;
 
         Stream.of("a", "b", "g", "h")
                 .map(Person::new)// constructor reference

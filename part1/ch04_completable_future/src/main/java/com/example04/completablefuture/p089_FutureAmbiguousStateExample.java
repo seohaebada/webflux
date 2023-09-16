@@ -3,14 +3,14 @@ package com.example04.completablefuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-public class FutureAmbiguousStateExample {
+public class p089_FutureAmbiguousStateExample {
     public static void main(String[] args)
             throws InterruptedException, ExecutionException {
-        Future futureToCancel = FutureHelper.getFuture();
+        Future futureToCancel = p083_FutureHelper.getFuture();
         futureToCancel.cancel(true);
         assert futureToCancel.isDone();
 
-        Future futureWithException = FutureHelper.getFutureWithException();
+        Future futureWithException = p083_FutureHelper.getFutureWithException();
 
         Exception exception = null;
         try {

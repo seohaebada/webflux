@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CompletionStageExceptionallyExample {
     public static void main(String[] args)
             throws InterruptedException {
-        Helper.completionStage()
+        p099_Helper.completionStage()
                 .thenApplyAsync(i -> {
                     log.info("in thenApplyAsync");
                     return i / 0;

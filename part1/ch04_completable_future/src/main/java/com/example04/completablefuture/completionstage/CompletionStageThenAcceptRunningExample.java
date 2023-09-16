@@ -9,7 +9,7 @@ public class CompletionStageThenAcceptRunningExample {
     public static void main(String[] args)
             throws InterruptedException {
         log.info("start main");
-        CompletionStage<Integer> stage = Helper.runningStage();
+        CompletionStage<Integer> stage = p099_Helper.runningStage();
         stage.thenAccept(i -> {
             log.info("{} in thenAccept", i);
         }).thenAccept(i -> {
