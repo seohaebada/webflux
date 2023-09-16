@@ -9,10 +9,10 @@ import java.nio.channels.FileChannel;
 import java.nio.file.StandardOpenOption;
 
 @Slf4j
-public class FileChannelWriteExample {
+public class p275_FileChannelWriteExample {
     public static void main(String[] args) throws IOException {
         log.info("start main");
-        var file = new File(FileChannelWriteExample.class
+        var file = new File(p275_FileChannelWriteExample.class
                 .getClassLoader()
                 .getResource("hello.txt")
                 .getFile());

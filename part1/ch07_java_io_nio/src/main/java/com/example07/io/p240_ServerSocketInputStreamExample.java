@@ -8,14 +8,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 @Slf4j
-public class ServerSocketInputStreamExample {
+public class p240_ServerSocketInputStreamExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start maiin");
         // 서버 소켓 생성
         ServerSocket serverSocket = new ServerSocket(8080);
 
-        // 클라이언트 접속 대기
+        // 클라이언트 접속 대기 (accept가 끝나면 반환값으로 client의 socket을 전달)
         // 클라이언트가 접속할때까지 blocking
         Socket clientSocket = serverSocket.accept();
 

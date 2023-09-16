@@ -6,7 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 @Slf4j
-public class ByteArrayOutputStreamExample {
+public class p245_ByteArrayOutputStreamExample {
     public static void main(String[] args) throws IOException {
         log.info("start main");
 

@@ -7,10 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 @Slf4j
-public class FileOutputStreamExample {
+public class p247_FileOutputStreamExample {
     public static void main(String[] args) throws IOException {
         log.info("start main");
-        var file = new File(FileOutputStreamExample.class
+        var file = new File(p247_FileOutputStreamExample.class
                 .getClassLoader()
                 .getResource("dest.txt")
                 .getFile());

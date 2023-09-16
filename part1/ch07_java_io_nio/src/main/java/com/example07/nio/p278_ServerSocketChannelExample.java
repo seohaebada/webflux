@@ -8,7 +8,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.ServerSocketChannel;
 
 @Slf4j
-public class ServerSocketChannelExample {
+public class p278_ServerSocketChannelExample {
     public static void main(String[] args) throws IOException {
         log.info("start main");
         try (var serverChannel = ServerSocketChannel.open()) {

@@ -9,10 +9,10 @@ import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 
 @Slf4j
-public class FileChannelReadExample {
+public class p274_FileChannelReadExample {
     public static void main(String[] args) throws IOException {
         log.info("start main");
-        var file = new File(FileChannelReadExample.class
+        var file = new File(p274_FileChannelReadExample.class
                 .getClassLoader()
                 .getResource("hello.txt")
                 .getFile());

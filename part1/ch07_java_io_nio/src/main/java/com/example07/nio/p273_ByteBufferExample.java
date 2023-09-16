@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.nio.ByteBuffer;
 
 @Slf4j
-public class ByteBufferExample {
+public class p273_ByteBufferExample {
     public static void main(String[] args) {
         // DirectByteBuffer
         var directByteBuffer = ByteBuffer.allocateDirect(1024);

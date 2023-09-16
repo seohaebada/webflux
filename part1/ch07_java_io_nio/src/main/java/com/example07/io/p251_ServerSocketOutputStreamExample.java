@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 @Slf4j
-public class ServerSocketOutputStreamExample {
+public class p251_ServerSocketOutputStreamExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start maiin");

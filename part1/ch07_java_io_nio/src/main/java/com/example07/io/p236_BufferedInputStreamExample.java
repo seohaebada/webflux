@@ -8,11 +8,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 @Slf4j
-public class BufferedInputStreamExample {
+public class p236_BufferedInputStreamExample {
     public static void main(String[] args)
             throws IOException, ClassNotFoundException {
         log.info("start main");
-        var file = new File(BufferedInputStreamExample.class
+        var file = new File(p236_BufferedInputStreamExample.class
                 .getClassLoader()
                 .getResource("data.txt").getFile());
 

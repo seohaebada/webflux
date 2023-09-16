@@ -8,10 +8,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @Slf4j
-public class FileWriterExample {
+public class p254_FileWriterExample {
     public static void main(String[] args) throws IOException {
         log.info("start main");
-        var file = new File(FileWriterExample.class
+        var file = new File(p254_FileWriterExample.class
                 .getClassLoader()
                 .getResource("koreanhello2.txt").getFile());
 

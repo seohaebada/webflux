@@ -9,7 +9,7 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 
 @Slf4j
-public class SocketChannelExample {
+public class p277_SocketChannelExample {
     public static void main(String[] args) throws IOException {
         log.info("start main");
         try (var socketChannel = SocketChannel.open()) {
