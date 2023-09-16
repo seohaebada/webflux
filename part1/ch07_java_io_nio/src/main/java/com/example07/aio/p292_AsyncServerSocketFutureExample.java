@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Future;
 
 @Slf4j
-public class AsyncServerSocketFutureExample {
+public class p292_AsyncServerSocketFutureExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");

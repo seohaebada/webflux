@@ -8,7 +8,7 @@ import java.net.InetSocketAddress;
 import java.nio.channels.ServerSocketChannel;
 
 @Slf4j
-public class ServerSocketChannelNonBlockingAcceptOnlyExample {
+public class p282_ServerSocketChannelNonBlockingAcceptOnlyExample {
     @SneakyThrows
     public static void main(String[] args) throws IOException {
         log.info("start main");

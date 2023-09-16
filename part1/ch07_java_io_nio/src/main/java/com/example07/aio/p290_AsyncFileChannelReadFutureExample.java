@@ -10,11 +10,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Future;
 
 @Slf4j
-public class AsyncFileChannelReadFutureExample {
+public class p290_AsyncFileChannelReadFutureExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
-        var file = new File(AsyncFileChannelReadFutureExample.class
+        var file = new File(p290_AsyncFileChannelReadFutureExample.class
                 .getClassLoader()
                 .getResource("hello.txt")
                 .getFile());

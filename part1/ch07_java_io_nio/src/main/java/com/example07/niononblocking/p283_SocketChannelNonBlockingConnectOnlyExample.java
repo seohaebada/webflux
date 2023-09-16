@@ -7,7 +7,7 @@ import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
 
 @Slf4j
-public class SocketChannelNonBlockingConnectOnlyExample {
+public class p283_SocketChannelNonBlockingConnectOnlyExample {
     public static void main(String[] args) throws IOException {
         log.info("start main");
         try (var socketChannel = SocketChannel.open()) {
