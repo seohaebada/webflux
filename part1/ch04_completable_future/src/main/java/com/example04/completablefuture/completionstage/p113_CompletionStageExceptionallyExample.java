@@ -3,7 +3,7 @@ package com.example04.completablefuture.completionstage;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CompletionStageExceptionallyExample {
+public class p113_CompletionStageExceptionallyExample {
     public static void main(String[] args)
             throws InterruptedException {
         p099_Helper.completionStage()

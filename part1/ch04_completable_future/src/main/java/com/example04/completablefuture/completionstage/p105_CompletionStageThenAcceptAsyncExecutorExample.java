@@ -6,7 +6,7 @@ import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Executors;
 
 @Slf4j
-public class CompletionStageThenAcceptAsyncExecutorExample {
+public class p105_CompletionStageThenAcceptAsyncExecutorExample {
     public static void main(String[] args)
             throws InterruptedException {
 

@@ -6,25 +6,23 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 @Slf4j
-public class CompletableFutureSupplyAsyncExample {
+public class p118_CompletableFutureRunAsyncExample {
     public static void main(String[] args)
             throws ExecutionException, InterruptedException {
         log.info("start main");
-        var future = CompletableFuture.supplyAsync(() -> {
-            log.info("supplyAsync");
+        var future = CompletableFuture.runAsync(() -> {
+            log.info("runAsync");
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            return 1;
         });
         assert !future.isDone();
 
         Thread.sleep(1000);
-
         assert future.isDone();
-        assert future.get() == 1;
+        assert future.get() == null;
 
         log.info("end main");
     }

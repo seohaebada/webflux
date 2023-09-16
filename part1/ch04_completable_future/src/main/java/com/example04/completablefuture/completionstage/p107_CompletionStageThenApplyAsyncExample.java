@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.CompletionStage;
 
 @Slf4j
-public class CompletionStageThenApplyAsyncExample {
+public class p107_CompletionStageThenApplyAsyncExample {
     public static void main(String[] args)
             throws InterruptedException {
         CompletionStage<Integer> stage = p099_Helper.completionStage();

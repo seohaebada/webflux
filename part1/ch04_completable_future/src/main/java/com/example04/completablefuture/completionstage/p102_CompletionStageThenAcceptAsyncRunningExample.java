@@ -5,15 +5,17 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.CompletionStage;
 
 @Slf4j
-public class CompletionStageThenAcceptRunningExample {
+public class p102_CompletionStageThenAcceptAsyncRunningExample {
     public static void main(String[] args)
             throws InterruptedException {
         log.info("start main");
+
+        // thread pool에 있는 쓰레드에서 action 실행
         CompletionStage<Integer> stage = p099_Helper.runningStage();
-        stage.thenAccept(i -> {
-            log.info("{} in thenAccept", i);
-        }).thenAccept(i -> {
-            log.info("{} in thenAccept2", i);
+        stage.thenAcceptAsync(i -> {
+            log.info("{} in thenAcceptAsync", i);
+        }).thenAcceptAsync(i -> {
+            log.info("{} in thenAcceptAsync", i);
         });
 
         Thread.sleep(2000);
