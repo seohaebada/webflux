@@ -7,7 +7,7 @@ import java.util.concurrent.Flow;
 
 @Slf4j
 @RequiredArgsConstructor
-public class RequestNSubscriber<T> implements Flow.Subscriber<T>{
+public class p167_RequestNSubscriber<T> implements Flow.Subscriber<T>{
     private final Integer n;
     private Flow.Subscription subscription;
     private int count = 0;

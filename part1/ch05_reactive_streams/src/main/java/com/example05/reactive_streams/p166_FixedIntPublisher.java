@@ -15,8 +15,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
-public class FixedIntPublisher
-        implements Flow.Publisher<FixedIntPublisher.Result> {
+public class p166_FixedIntPublisher
+        implements Flow.Publisher<p166_FixedIntPublisher.Result> {
     @Data
     public static class Result {
         private final Integer value;
@@ -30,11 +30,12 @@ public class FixedIntPublisher
 
     @Override
     public void subscribe(Flow.Subscriber<? super Result> subscriber) {
-
+        // 8개의 integer
         var numbers = Collections.synchronizedList(
                 new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7))
         );
         Iterator<Integer> iterator = numbers.iterator();
+
         var subscription = new IntSubscription(subscriber, iterator);
         subscriber.onSubscribe(subscription);
     }
@@ -50,6 +51,7 @@ public class FixedIntPublisher
 
         @Override
         public void request(long n) {
+            // 비동기 실행
             executor.submit(() -> {
                 for (int i = 0; i < n; i++) {
                     if (numbers.hasNext()) {
