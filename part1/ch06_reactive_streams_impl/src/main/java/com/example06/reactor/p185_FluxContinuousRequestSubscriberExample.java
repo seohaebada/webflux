@@ -6,9 +6,9 @@ import reactor.core.publisher.Flux;
 import java.util.List;
 
 @Slf4j
-public class FluxContinuousRequestSubscriberExample {
+public class p185_FluxContinuousRequestSubscriberExample {
     public static void main(String[] args) {
-        getItems().subscribe(new ContinuousRequestSubscriber<>());
+        getItems().subscribe(new p185_ContinuousRequestSubscriber<>());
     }
 
     private static Flux<Integer> getItems() {

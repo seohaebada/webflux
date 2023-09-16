@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.core.Completable;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CompletableExample {
+public class p213_CompletableErrorExample {
     public static void main(String[] args) {
         getCompletion()
                 .subscribe(new SimpleCompletableObserver());
@@ -13,7 +13,9 @@ public class CompletableExample {
     private static Completable getCompletion() {
         return Completable.create(completableEmitter -> {
             Thread.sleep(1000);
-            completableEmitter.onComplete(); // 값이 아닌 사건을 전달 
+            completableEmitter.onError(
+                    new RuntimeException("error in completable")
+            );
         });
     }
 }

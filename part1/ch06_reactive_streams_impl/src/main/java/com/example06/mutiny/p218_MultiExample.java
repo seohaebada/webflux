@@ -4,13 +4,13 @@ import io.smallrye.mutiny.Multi;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class MultiExample {
+public class p218_MultiExample {
     public static void main(String[] args) {
         getItems()
                 .subscribe()
                 // subscribe 동시에 넘길 수 없음, subscribe() 호출 후 아래 호출 필요
                 .withSubscriber(
-                        new SimpleMultiSubscriber<>(Integer.MAX_VALUE)
+                        new p218_SimpleMultiSubscriber<>(Integer.MAX_VALUE)
                 );
     }
 

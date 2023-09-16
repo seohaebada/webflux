@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
-public class SimpleUniSubscriber<T> implements UniSubscriber<T> {
+public class p220_SimpleUniSubscriber<T> implements UniSubscriber<T> {
     private final Integer count;
     private UniSubscription subscription;
 

@@ -4,19 +4,21 @@ import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
 @Slf4j
-public class FluxErrorExample {
+public class p183_FluxNoSubscribeExample {
     public static void main(String[] args) {
         log.info("start main");
-        getItems().subscribe(new SimpleSubscriber<>(Integer.MAX_VALUE));
+        getItems(); // subscribe 하지않으면 아무일도 일어나지 않는다.
         log.info("end main");
     }
 
     private static Flux<Integer> getItems() {
         return Flux.create(fluxSink -> {
-            fluxSink.next(0);
-            fluxSink.next(1);
-            var error = new RuntimeException("error in flux");
-            fluxSink.error(error); // 에러 전달
+            log.info("start getItems");
+            for (int i = 0; i < 5; i++) {
+                fluxSink.next(i);
+            }
+            fluxSink.complete();
+            log.info("end getItems");
         });
     }
 }

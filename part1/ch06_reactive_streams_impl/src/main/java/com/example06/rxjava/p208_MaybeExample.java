@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.core.Maybe;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class MaybeNullValueExample {
+public class p208_MaybeExample {
     public static void main(String[] args) {
         maybeGetItem()
                 .subscribe(new SimpleMaybeObserver<>());
@@ -12,7 +12,7 @@ public class MaybeNullValueExample {
 
     private static Maybe<Integer> maybeGetItem() {
         return Maybe.create(maybeEmitter -> {
-            maybeEmitter.onSuccess(null);
+            maybeEmitter.onSuccess(1);
         });
     }
 }

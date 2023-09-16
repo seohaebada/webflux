@@ -6,10 +6,10 @@ import reactor.core.publisher.Flux;
 import java.util.List;
 
 @Slf4j
-public class FluxSimpleRequestThreeExample {
+public class p184_FluxSimpleRequestThreeExample {
     public static void main(String[] args) {
         // 3개 요청 (1, 2, 3 이후 종료) , 추가적인 요청 없음 
-        getItems().subscribe(new SimpleSubscriber<>(3));
+        getItems().subscribe(new p181_SimpleSubscriber<>(3));
     }
 
     private static Flux<Integer> getItems() {

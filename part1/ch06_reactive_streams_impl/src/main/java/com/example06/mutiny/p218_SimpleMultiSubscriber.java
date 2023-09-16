@@ -8,7 +8,7 @@ import java.util.concurrent.Flow;
 
 @Slf4j
 @RequiredArgsConstructor
-public class SimpleMultiSubscriber<T> implements MultiSubscriber<T> {
+public class p218_SimpleMultiSubscriber<T> implements MultiSubscriber<T> {
     private final Integer count;
 
     @Override

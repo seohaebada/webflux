@@ -4,11 +4,11 @@ import io.smallrye.mutiny.Uni;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class UniExample {
+public class p220_UniExample {
     public static void main(String[] args) {
         getItem()
                 .subscribe()
-                .withSubscriber(new SimpleUniSubscriber<>(Integer.MAX_VALUE));
+                .withSubscriber(new p220_SimpleUniSubscriber<>(Integer.MAX_VALUE));
     }
 
     private static Uni<Integer> getItem() {
