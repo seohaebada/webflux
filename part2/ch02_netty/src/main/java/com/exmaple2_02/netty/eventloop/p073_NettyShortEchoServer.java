@@ -14,7 +14,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class NettyShortEchoServer {
+public class p073_NettyShortEchoServer {
     private static ChannelInboundHandler echoHandler() {
         return new ChannelInboundHandlerAdapter() {
             @Override
@@ -41,11 +41,11 @@ public class NettyShortEchoServer {
         var stringDecoder = new StringDecoder();
 
         var bind = bootstrap
-                .group(parentGroup, childGroup)
-                .channel(NioServerSocketChannel.class)
+                .group(parentGroup, childGroup) // EventLoopGroup 등록
+                .channel(NioServerSocketChannel.class) // instance 자동 생성
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
-                    protected void initChannel(SocketChannel ch) {
+                    protected void initChannel(SocketChannel ch) { // connect 되었을때 실행할 코드
                         ch.pipeline()
                                 .addLast(executorGroup, new LoggingHandler(LogLevel.INFO))
                                 .addLast(stringEncoder, stringDecoder, echoHandler());

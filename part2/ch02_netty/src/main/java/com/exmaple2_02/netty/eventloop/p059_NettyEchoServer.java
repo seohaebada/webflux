@@ -14,9 +14,12 @@ import lombok.extern.slf4j.Slf4j;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 
+
+// p.61
 @Slf4j
-public class NettyEchoServer {
+public class p059_NettyEchoServer {
     private static ChannelInboundHandler echoHandler() {
+        // TailHandler -> LoggingHandler -> echoHandler
         return new ChannelInboundHandlerAdapter() {
             @Override
             public void channelRead(ChannelHandlerContext ctx, Object msg) {
@@ -28,11 +31,12 @@ public class NettyEchoServer {
                         var body = buf.readCharSequence(len, charset);
                         log.info("EchoHandler.channelRead: " + body);
 
-                        buf.readerIndex(0); // flip
+                        buf.readerIndex(0); // rewind
                         var result = buf.copy();
-                        ctx.writeAndFlush(result)
+                        ctx.writeAndFlush(result) // flush 후에 채널을 닫아라
                                 .addListener(ChannelFutureListener.CLOSE);
                     } finally {
+                        // 다 읽었으므로 해제
                         ReferenceCountUtil.release(msg);
                     }
                 }
@@ -44,16 +48,21 @@ public class NettyEchoServer {
         var executorGroup = new DefaultEventExecutorGroup(4);
 
         return new ChannelInboundHandlerAdapter() {
+            // msg 는 accept의 결과물인 SocketChannel
             @Override
             public void channelRead(ChannelHandlerContext ctx, Object msg) {
                 log.info("Acceptor.channelRead");
                 if (msg instanceof SocketChannel) {
+                    // SocketChannel 로 받고,
                     SocketChannel socketChannel = (SocketChannel) msg;
+                    // 별도의 쓰레드에서 LoggingHandler를 돌리겠다는 설정 (별도의 executorGroup)
+                    // = 별개의 eventExecutor를 갖게해서, eventLoop에서 돌리지않고 별도의 쓰레드로 돌리겠다.
                     socketChannel.pipeline().addLast(
                             executorGroup, new LoggingHandler(LogLevel.INFO));
                     socketChannel.pipeline().addLast(
                             echoHandler()
                     );
+                    // read 이벤트 담당하는 childGroup에 등록
                     childGroup.register(socketChannel);
                 }
             }
