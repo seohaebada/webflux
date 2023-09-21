@@ -16,6 +16,7 @@ public class SimpleColdPublisher implements Flow.Publisher<Integer> {
         var iterator = Collections.synchronizedList(
                 IntStream.range(1, 10).boxed().collect(Collectors.toList())
         ).iterator();
+
         var subscription = new SimpleColdSubscription(iterator, subscriber);
         subscriber.onSubscribe(subscription);
     }
