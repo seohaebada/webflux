@@ -45,7 +45,7 @@ public class p073_NettyShortEchoServer {
                 .channel(NioServerSocketChannel.class) // instance 자동 생성
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
-                    protected void initChannel(SocketChannel ch) { // connect 되었을때 실행할 코드
+                    protected void initChannel(SocketChannel ch) { // connect 되었을때 실행할 코드 (accept 되어서 read할 시점에)
                         ch.pipeline()
                                 .addLast(executorGroup, new LoggingHandler(LogLevel.INFO))
                                 .addLast(stringEncoder, stringDecoder, echoHandler());

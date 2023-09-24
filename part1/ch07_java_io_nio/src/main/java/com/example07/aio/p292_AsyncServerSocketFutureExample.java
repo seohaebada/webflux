@@ -41,5 +41,5 @@ public class p292_AsyncServerSocketFutureExample {
         clientSocket.write(responseBuffer);
         clientSocket.close();
         log.info("end client");
-}
+    }
 }

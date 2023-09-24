@@ -6,7 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 @Slf4j
-public class ByteArrayInputStreamAllExample {
+public class p232_ByteArrayInputStreamAllExample {
     public static void main(String[] args) throws IOException {
         log.info("start main");
         var bytes = new byte[]{100, 101, 102, 103, 104};
