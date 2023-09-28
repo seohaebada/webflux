@@ -6,25 +6,21 @@ import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
 @Slf4j
-public class PublishOnSubscribeOnExample {
+public class p132_SubscribeOnSchedulerExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
         Flux.create(sink -> {
-            for (var i = 0; i < 5; i++) {
+            for (var i = 0; i < 5; i++) { // boundedEalastic (subscribe 실행 쓰레드 영향)
                 log.info("next: {}", i);
                 sink.next(i);
             }
-        }).publishOn(
-                Schedulers.single()
-        ).doOnNext(item -> {
+        }).doOnNext(item -> { // // boundedEalastic
             log.info("doOnNext: {}", item);
-        }).publishOn(
-                Schedulers.boundedElastic()
-        ).doOnNext(item -> {
+        }).doOnNext(item -> { // // boundedEalastic
             log.info("doOnNext2: {}", item);
-        }).subscribeOn(Schedulers.parallel()
-        ).subscribe(value -> {
+        }).subscribeOn(Schedulers.boundedElastic()
+        ).subscribe(value -> { // boundedEalastic
             log.info("value: " + value);
         });
         Thread.sleep(1000);

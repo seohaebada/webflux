@@ -6,7 +6,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
 @Slf4j
-public class ParallelSchedulerExample {
+public class p122_SingleSchedulerExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
@@ -15,13 +15,13 @@ public class ParallelSchedulerExample {
             Flux.create(sink -> {
                 log.info("next: {}", idx);
                 sink.next(idx);
-            }).subscribeOn(
-                    Schedulers.parallel()
+            }).subscribeOn( // 캐싱된 1개크기의 쓰레드풀을 제공 (동시에 여러개에서 호출하더라도 딱 1개의 scheduler를 계속 제공)
+                    Schedulers.single()
             ).subscribe(value -> {
                 log.info("value: " + value);
             });
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         log.info("end main");
     }
 }
