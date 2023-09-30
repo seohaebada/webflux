@@ -7,10 +7,11 @@ import reactor.core.publisher.Flux;
 import java.util.function.Function;
 
 @Slf4j
-public class OnErrorResumeExample {
+public class p141_OnErrorResumeExample {
     public static void main(String[] args) {
         log.info("start main");
         Flux.error(new RuntimeException("error"))
+                // error가 발생한 경우에만 apply 실행
                 .onErrorResume(new Function<Throwable, Publisher<Integer>>() {
                     @Override
                     public Publisher<Integer> apply(Throwable throwable) {
