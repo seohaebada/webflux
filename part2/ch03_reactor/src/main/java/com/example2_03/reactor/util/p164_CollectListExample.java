@@ -4,11 +4,11 @@ import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
 @Slf4j
-public class FilterExample {
+public class p164_CollectListExample {
     public static void main(String[] args) {
         log.info("start main");
         Flux.range(1, 5)
-                .filter(value -> value % 2 == 0)
+                .collectList()
                 .doOnNext(value -> {
                     log.info("doOnNext: " + value);
                 })

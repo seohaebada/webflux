@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
 @Slf4j
-public class DoOnXXExample {
+public class p158_MapExample {
     public static void main(String[] args) {
         log.info("start main");
         Flux.range(1, 5)
@@ -12,16 +12,18 @@ public class DoOnXXExample {
                 .doOnNext(value -> {
                     log.info("doOnNext: " + value);
                 })
-                .doOnComplete(() -> {
-                    log.info("doOnComplete");
+                .subscribe();
+
+        Flux.range(1, 5)
+                .mapNotNull(value -> {
+                    if (value % 2 == 0) {
+                        return value;
+                    }
+                    return null; // 변경된 값이 null인 경우 필터
                 })
-                .doOnSubscribe(subscription -> {
-                    log.info("doOnSubscribe");
+                .doOnNext(value -> {
+                    log.info("doOnNext: " + value);
                 })
-                .doOnRequest(value -> {
-                    log.info("doOnRequest: " + value);
-                })
-                .map(value -> value / 2)
                 .subscribe();
         log.info("end main");
     }

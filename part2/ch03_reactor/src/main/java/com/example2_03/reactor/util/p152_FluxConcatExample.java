@@ -7,7 +7,7 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 
 @Slf4j
-public class FluxMergeSequentialExample {
+public class p152_FluxConcatExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
@@ -22,12 +22,13 @@ public class FluxMergeSequentialExample {
                 })
                 .delayElements(Duration.ofMillis(100));
 
-        Flux.mergeSequential(flux1, flux2)
+        // 순서 보장
+        // 각각 publisher의 onNext 이벤트 전파
+        Flux.concat(flux1, flux2)
                 .doOnNext(value -> {
                     log.info("doOnNext: " + value);
                 })
                 .subscribe();
-
         Thread.sleep(1000);
         log.info("end main");
     }

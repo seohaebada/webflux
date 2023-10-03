@@ -8,7 +8,7 @@ import reactor.core.scheduler.Schedulers;
 import java.time.Duration;
 
 @Slf4j
-public class DelayedElementsLateNextExample {
+public class p150_DelayedElementsLateNextExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
@@ -16,7 +16,7 @@ public class DelayedElementsLateNextExample {
                 sink -> {
                     for (int i = 1; i <= 5; i++) {
                         try {
-                            Thread.sleep(1000);
+                            Thread.sleep(1000); // 1초
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);
                         }
@@ -24,6 +24,7 @@ public class DelayedElementsLateNextExample {
                     }
                     sink.complete();
                 })
+                // 위 1초 sleep 과 비교해서 더 늦게도착하면 바로 내보냄
                 .delayElements(Duration.ofMillis(500))
                 .doOnNext(value -> {
                     log.info("doOnNext: " + value);

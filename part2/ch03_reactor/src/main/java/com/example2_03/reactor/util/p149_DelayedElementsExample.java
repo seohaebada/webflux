@@ -8,7 +8,7 @@ import reactor.core.scheduler.Schedulers;
 import java.time.Duration;
 
 @Slf4j
-public class DelayedElementsExample {
+public class p149_DelayedElementsExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
@@ -24,6 +24,7 @@ public class DelayedElementsExample {
                     }
                     sink.complete();
                 })
+                // delay만큼의 간격을 두고 onNext 이벤트를 발행
                 .delayElements(Duration.ofMillis(500))
                 .doOnNext(value -> {
                     log.info("doOnNext: " + value);

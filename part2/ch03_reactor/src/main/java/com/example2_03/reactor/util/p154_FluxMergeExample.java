@@ -7,7 +7,7 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 
 @Slf4j
-public class FluxConcatExample {
+public class p154_FluxMergeExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
@@ -22,7 +22,10 @@ public class FluxConcatExample {
                 })
                 .delayElements(Duration.ofMillis(100));
 
-        Flux.concat(flux1, flux2)
+        // 시작하자마자 모든 publisher를 바로 subscribe
+        // 각각 Publisher의 onNext 이벤트가 동시에 도달
+        // Publisher의 순서가 보장되지 않는다.
+        Flux.merge(flux1, flux2)
                 .doOnNext(value -> {
                     log.info("doOnNext: " + value);
                 })

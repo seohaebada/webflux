@@ -7,7 +7,7 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 
 @Slf4j
-public class FluxMergeExample {
+public class p156_FluxMergeSequentialExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
@@ -22,11 +22,13 @@ public class FluxMergeExample {
                 })
                 .delayElements(Duration.ofMillis(100));
 
-        Flux.merge(flux1, flux2)
+        // merge 와 비슷,, 다만 내부에서 재정렬하여 순서를 보장한다.
+        Flux.mergeSequential(flux1, flux2)
                 .doOnNext(value -> {
                     log.info("doOnNext: " + value);
                 })
                 .subscribe();
+
         Thread.sleep(1000);
         log.info("end main");
     }
