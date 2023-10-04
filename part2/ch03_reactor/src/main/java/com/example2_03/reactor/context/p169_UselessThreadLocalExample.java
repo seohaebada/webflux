@@ -6,22 +6,27 @@ import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
 @Slf4j
-public class UselessThreadLocalExample {
+public class p169_UselessThreadLocalExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
+
+        // main
         ThreadLocal<String> threadLocal = new ThreadLocal<>();
         threadLocal.set("wooman");
 
-        Flux.create(sink -> {
+        Flux.create(sink -> { // single
+            // 접근 불가능
             log.info("threadLocal: " + threadLocal.get());
             sink.next(1);
         }).publishOn(Schedulers.parallel()
-        ).map(value -> {
+        ).map(value -> { // parallel
+            // 접근 불가능
             log.info("threadLocal: " + threadLocal.get());
             return value;
         }).publishOn(Schedulers.boundedElastic()
-        ).map(value -> {
+        ).map(value -> { // boundedElastic
+            // 접근 불가능
             log.info("threadLocal: " + threadLocal.get());
             return value;
         }).subscribeOn(Schedulers.single()
