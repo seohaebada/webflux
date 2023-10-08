@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.server.HttpServer;
 
 @Slf4j
-public class WebHandlerOnlyQueryParamExample {
+public class p209_WebHandlerOnlyQueryParamExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
@@ -43,10 +43,17 @@ public class WebHandlerOnlyQueryParamExample {
             }
         };
 
+        // build() 메서드
+        // FilteringWebHandler 생성 -> ExceptionHandlingWebHandler 생성
+        // Builder에 주어진 여러 클래스를 이용하여 하나의 HttpWebHandlerAdapter 생성
+        // HttpWebHandlerAdapter
+        // HttpWebHandlerAdapter는 ServerWebExchange를 만들면서 CodecConfigurer를 전달
         final HttpHandler webHttpHandler = WebHttpHandlerBuilder
                 .webHandler(webHandler)
                 .build();
 
+        // http://localhost:8080/?name=taewoo
+        // 어댑터로 감싸서 httpServer의 handle 전달
         final var adapter = new ReactorHttpHandlerAdapter(webHttpHandler);
         HttpServer.create()
                 .host("localhost")

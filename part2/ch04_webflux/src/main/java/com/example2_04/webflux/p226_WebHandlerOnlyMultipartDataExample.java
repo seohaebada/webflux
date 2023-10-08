@@ -1,14 +1,13 @@
 package com.example2_04.webflux;
 
-import lombok.Data;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.http.codec.ServerCodecConfigurer;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.codec.multipart.FormFieldPart;
 import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
 import org.springframework.http.server.reactive.ServerHttpResponse;
-import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebHandler;
 import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
@@ -16,29 +15,19 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.server.HttpServer;
 
 @Slf4j
-public class WebHandlerOnlyAcceptJsonExample {
-    @Data
-    private static class NameHolder {
-        private String name;
-    }
-
+public class p226_WebHandlerOnlyMultipartDataExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
-        var codecConfigurer = ServerCodecConfigurer.create();
-
         var webHandler = new WebHandler() {
             @Override
             public Mono<Void> handle(ServerWebExchange exchange) {
-                final ServerRequest request = ServerRequest.create(
-                        exchange,
-                        codecConfigurer.getReaders()
-                );
                 final ServerHttpResponse response = exchange.getResponse();
 
-                final var bodyMono = request.bodyToMono(NameHolder.class);
-                return bodyMono.flatMap(nameHolder -> {
-                    String nameQuery = nameHolder.name;
+                return exchange.getMultipartData().map(multipartData -> {
+                    // FormFieldPart로 감싸기
+                    return ((FormFieldPart)multipartData.getFirst("name")).value();
+                }).flatMap(nameQuery -> {
                     String name = nameQuery == null ? "world" : nameQuery;
 
                     String content = "Hello " + name;
@@ -48,6 +37,8 @@ public class WebHandlerOnlyAcceptJsonExample {
                                     .wrap(content.getBytes())
                     );
 
+                    response.addCookie(
+                            ResponseCookie.from("name", name).build());
                     response.getHeaders()
                             .add("Content-Type", "text/plain");
                     return response.writeWith(responseBody);

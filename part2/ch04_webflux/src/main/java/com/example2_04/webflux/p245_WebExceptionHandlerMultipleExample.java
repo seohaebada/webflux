@@ -16,7 +16,7 @@ import reactor.netty.http.server.HttpServer;
 import java.util.function.Function;
 
 @Slf4j
-public class WebExceptionHandlerMultipleExample {
+public class p245_WebExceptionHandlerMultipleExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
@@ -50,6 +50,8 @@ public class WebExceptionHandlerMultipleExample {
         final HttpHandler webHttpHandler = WebHttpHandlerBuilder
                 .webHandler(webHandler)
                 .exceptionHandler(
+                        // 순서가 중요
+                        // 같은 Exception을 처리하는 WebExceptionHandler가 여러개라면 먼저 등록된 handler가 응답을 처리
                         exceptionHandlerFactory.apply("3"),
                         exceptionHandlerFactory.apply("2"),
                         exceptionHandlerFactory.apply("1")

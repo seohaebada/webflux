@@ -1,46 +1,47 @@
 package com.example2_04.webflux;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Data;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.http.ResponseCookie;
+import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
 import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebHandler;
 import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.server.HttpServer;
 
-import java.nio.charset.StandardCharsets;
-
 @Slf4j
-public class WebHandlerOnlyMultipartDataFileExample {
+public class p228_WebHandlerOnlyAcceptJsonExample {
+    @Data
+    private static class NameHolder {
+        private String name;
+    }
+
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
-        var objectMapper = new ObjectMapper();
+        // ServerCodecConfigurer 생성
+        var codecConfigurer = ServerCodecConfigurer.create();
 
         var webHandler = new WebHandler() {
             @Override
             public Mono<Void> handle(ServerWebExchange exchange) {
+                final ServerRequest request = ServerRequest.create(
+                        exchange,
+                        codecConfigurer.getReaders()
+                );
                 final ServerHttpResponse response = exchange.getResponse();
 
-                return exchange.getMultipartData().flatMap(multipartData -> {
-                    return (multipartData.getFirst("data")).content()
-                            .map(dataBuffer -> dataBuffer.toString(StandardCharsets.UTF_8))
-                            .reduce((s1, s2) -> s1 + s2);
-                }).flatMap(json -> {
-                    String name;
-                    try {
-                        name = objectMapper.readTree(json).get("name").asText();
-                    } catch (JsonProcessingException e) {
-                        log.error(e.getMessage());
-                        name = "world";
-                    }
+                // 내부적으로 message -> object 전환
+                final var bodyMono = request.bodyToMono(NameHolder.class);
+                return bodyMono.flatMap(nameHolder -> {
+                    String nameQuery = nameHolder.name;
+                    String name = nameQuery == null ? "world" : nameQuery;
 
                     String content = "Hello " + name;
                     log.info("responseBody: {}", content);
@@ -49,8 +50,6 @@ public class WebHandlerOnlyMultipartDataFileExample {
                                     .wrap(content.getBytes())
                     );
 
-                    response.addCookie(
-                            ResponseCookie.from("name", name).build());
                     response.getHeaders()
                             .add("Content-Type", "text/plain");
                     return response.writeWith(responseBody);

@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.server.HttpServer;
 
 @Slf4j
-public class HttpHandlerExample {
+public class p201_HttpHandlerExample {
     public static void main(String[] args) throws InterruptedException {
         log.info("start main");
         var httpHandler = new HttpHandler() {
@@ -42,6 +42,8 @@ public class HttpHandlerExample {
         };
 
         var adapter = new ReactorHttpHandlerAdapter(httpHandler);
+        // reactor netty server create
+        // 요청 : http://localhost:8080/?name=taewoo
         HttpServer.create()
                 .host("localhost")
                 .port(8080)

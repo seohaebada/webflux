@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.server.HttpServer;
 
 @Slf4j
-public class WebExceptionHandlerExample {
+public class p244_WebExceptionHandlerExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");

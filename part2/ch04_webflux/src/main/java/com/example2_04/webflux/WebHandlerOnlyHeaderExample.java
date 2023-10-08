@@ -25,8 +25,11 @@ public class WebHandlerOnlyHeaderExample {
                 final ServerHttpRequest request = exchange.getRequest();
                 final ServerHttpResponse response = exchange.getResponse();
 
+                // get header
                 String name = request.getHeaders()
                         .getFirst("X-Custom-Name");
+
+                // 오류처리
                 if (name == null) {
                     response.setStatusCode(HttpStatus.BAD_REQUEST);
                     return response.setComplete();

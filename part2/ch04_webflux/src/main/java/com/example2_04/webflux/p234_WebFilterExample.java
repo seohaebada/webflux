@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.server.HttpServer;
 
 @Slf4j
-public class WebFilterExample {
+public class p234_WebFilterExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
@@ -58,10 +58,14 @@ public class WebFilterExample {
                     return response.setComplete();
                 } else {
                     exchange.getAttributes().put("name", name);
+
+                    // builder를 만들고, 변경된 newReq를 전달
                     var newReq = request.mutate()
                             .headers(h -> h.remove("X-Custom-Name"))
                             .build();
+
                     return chain.filter(
+                            // exchange를 새로 만듬
                             exchange.mutate().request(newReq).build()
                     );
                 }
@@ -76,6 +80,7 @@ public class WebFilterExample {
                 return chain.filter(exchange)
                         .doOnSuccess(v -> {
                             long endTime = System.nanoTime();
+                            // 처리시간 구하기
                             log.info("time: {} ms", (endTime - startTime)/1000000.0);
                         });
             }
