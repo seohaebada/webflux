@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.net.URI;
 
 @Slf4j
-public class URIExample {
+public class p203_URIExample {
     @SneakyThrows
     public static void main(String[] args) {
         URI uri = new URI("http://abc:test@localhost:8080/api/hello?name=taewoo#home");
