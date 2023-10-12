@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 import reactor.netty.http.server.HttpServer;
 
 @Slf4j
-public class WebHandlerOnlyExceptionOnErrorResumeExample {
+public class p247_WebHandlerOnlyExceptionOnErrorResumeExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
