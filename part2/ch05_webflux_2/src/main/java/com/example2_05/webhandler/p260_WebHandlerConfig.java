@@ -1,4 +1,4 @@
-package com.example2_04.webflux.webhandler;
+package com.example2_05.webhandler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Configuration
-public class WebHandlerConfig {
+public class p260_WebHandlerConfig {
     @Bean
     public WebHandler testHandler() {
         return exchange -> {
