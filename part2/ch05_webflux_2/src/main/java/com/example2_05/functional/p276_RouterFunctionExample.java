@@ -13,12 +13,15 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Slf4j
-public class RouterFunctionExample {
+public class p276_RouterFunctionExample {
     @SneakyThrows
     public static void main(String[] args) {
         log.info("start main");
-        RouterFunction<ServerResponse> router = route()
+        RouterFunction<ServerResponse> router = route() // builder 호출 메서드
+                // builder의 path() (공통 path)
                 .path("/greet", b1 -> b1
+                        // 주어진 요청이 아래와 같은 MediaType할 수 있는가?
+                        // 할 수 있다면, 아래쪽으로 넘긴다.
                         .nest(accept(MediaType.TEXT_PLAIN), b2 -> b2
                                 .GET("/",
                                         queryParam("name", name -> !name.isBlank()),
