@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 
 @RequestMapping("/greet/rendering")
 @Controller
-public class GreetingRenderingController {
+public class p310_GreetingRenderingController {
     @GetMapping("/redirect")
     Mono<Rendering> redirect() {
         var rendering = Rendering.redirectTo("/test")

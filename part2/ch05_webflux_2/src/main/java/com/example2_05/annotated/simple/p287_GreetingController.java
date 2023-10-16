@@ -6,7 +6,7 @@ import reactor.core.publisher.Mono;
 
 @Controller
 @RequestMapping(path = "/greet")
-public class GreetingController {
+public class p287_GreetingController {
     @ResponseBody
     @GetMapping(path = "/query", params = "name", produces = "text/plain")
     Mono<String> greetQueryParam(@RequestParam String name) {
