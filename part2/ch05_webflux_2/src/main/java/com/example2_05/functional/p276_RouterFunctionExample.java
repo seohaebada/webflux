@@ -25,14 +25,14 @@ public class p276_RouterFunctionExample {
                         .nest(accept(MediaType.TEXT_PLAIN), b2 -> b2
                                 .GET("/",
                                         queryParam("name", name -> !name.isBlank()),
-                                        GreetingHandler::greetQueryParam)
-                                .GET("/name/{name}", GreetingHandler::greetPathVariable)
+                                        p282_GreetingHandler::greetQueryParam)
+                                .GET("/name/{name}", p282_GreetingHandler::greetPathVariable)
                                 .GET("/header",
                                         headers(h -> h.firstHeader("X-Custom-Name") != null),
-                                        GreetingHandler::greetHeader)
+                                        p282_GreetingHandler::greetHeader)
                                 .POST("/json", contentType(MediaType.APPLICATION_JSON),
-                                        GreetingHandler::greetJsonBody)
-                                .POST("/text", GreetingHandler::greetPlainTextBody)
+                                        p282_GreetingHandler::greetJsonBody)
+                                .POST("/text", p282_GreetingHandler::greetPlainTextBody)
                         )
                 )
                 .build();

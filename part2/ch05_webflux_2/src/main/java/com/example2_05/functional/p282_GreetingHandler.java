@@ -6,7 +6,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 @Slf4j
-public class GreetingHandler {
+public class p282_GreetingHandler {
     public static Mono<ServerResponse> greetQueryParam(ServerRequest serverRequest) {
         String name = serverRequest.queryParam("name")
                 .orElse("world");
