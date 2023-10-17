@@ -23,7 +23,7 @@ public class UserController {
     public Mono<UserResponse> getUserById(
             @PathVariable String userId
     ) {
-        return ReactiveSecurityContextHolder
+        return ReactiveSecurityContextHolder // SecurityWebFilter 에서 넣은 Context 확인
                 .getContext()
                 .flatMap(context -> {
                     String name = context.getAuthentication().getName();
