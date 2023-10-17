@@ -12,7 +12,7 @@ public class ImageService {
     public Mono<Image> getImageById(String imageId) {
         return imageRepository.findById(imageId)
                 .map(imageEntity ->
-                        new Image(
+                        new Image( // ImageEntity to Image
                                 imageEntity.getId(), imageEntity.getName(), imageEntity.getUrl()
                         )
                 );

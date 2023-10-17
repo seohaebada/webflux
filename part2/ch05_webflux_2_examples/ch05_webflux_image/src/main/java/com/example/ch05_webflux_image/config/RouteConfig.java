@@ -13,6 +13,7 @@ public class RouteConfig {
     RouterFunction router(
             ImageHandler imageHandler
     ) {
+        // GET http://localhost:8081/api/images/100000
         return route()
                 .path("/api", b1 -> b1
                         .path("/images", b2 -> b2

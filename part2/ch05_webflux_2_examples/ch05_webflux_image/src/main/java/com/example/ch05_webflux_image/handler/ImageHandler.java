@@ -21,7 +21,7 @@ public class ImageHandler {
         return imageService.getImageById(imageId)
                 .map(image ->
                     new ImageResponse(image.getId(), image.getName(), image.getUrl())
-                ).flatMap(imageResp ->
+                ).flatMap(imageResp -> // Mono<Mono<ServerResponse>> -> Mono<ServerResponse>
                         ServerResponse.ok().bodyValue(imageResp)
                 ).onErrorMap(e -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
