@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+    // thread safe
     private WebClient webClient = WebClient.create("http://localhost:8081");
 
     private final UserReactorRepository userRepository = new UserReactorRepository();
@@ -24,6 +25,8 @@ public class UserService {
                     String imageId = userEntity.getProfileImageId();
 
                     Map<String, String> uriVariableMap = Map.of("imageId", imageId);
+
+                    // block() 쓰면 동기처럼 사용할 수 있음 (RestClient 대체 가능)
                     return webClient.get()
                             .uri("/api/images/{imageId}", uriVariableMap)
                             .retrieve()
