@@ -1,6 +1,6 @@
 package com.ch06_sse.sse.controller;
 
-import com.example2_05.sse.service.NotificationService;
+import com.ch06_sse.sse.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
@@ -19,6 +19,15 @@ public class NotificationController {
     private static AtomicInteger lastEventId = new AtomicInteger(1);
     private final NotificationService notificationService;
 
+    /**
+     * RequestMappingHandlerMapping -> RequestMappingHandlerAdapter -> (handlerResult: Flux<ServerSentEvent>) -> ResponseBodyResultHandler
+     *
+     * ResponseBodyResultHandler
+     * - bestMediaType : text/event-stream
+     *
+     * ServerSentEventHttpMessageWriter
+     * @return
+     */
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ServerSentEvent<String>> getNotifications() {
         return notificationService.getMessageFromSink()
