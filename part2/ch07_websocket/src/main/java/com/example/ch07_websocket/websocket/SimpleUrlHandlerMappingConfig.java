@@ -13,7 +13,7 @@ public class SimpleUrlHandlerMappingConfig {
         Map<String, Object> urlMap = Map.of(
                 "/suhm-greet", new GreetWebHandler(),
                 "/ws", new GreetWebSocketHandler(),
-                "/echo", new EchoWebSocketHandler()
+                "/echo", new p358_EchoWebSocketHandler()
         );
         SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
         mapping.setOrder(1);
