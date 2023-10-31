@@ -1,13 +1,12 @@
 package com.example.ch02_unit_test.assertion;
 
 import com.example.ch02_unit_test.TestToFail;
-import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 
-public class AssertTimeoutPreemptivelyExampleTest {
+public class p084_AssertTimeoutPreemptivelyExampleTest {
     @TestToFail
     void test1() {
         var duration = Duration.ofMillis(500);

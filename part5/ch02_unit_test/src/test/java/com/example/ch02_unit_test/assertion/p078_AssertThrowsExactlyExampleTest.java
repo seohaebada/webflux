@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
-public class AssertThrowsExactlyExampleTest {
+public class p078_AssertThrowsExactlyExampleTest {
     @Test
     void test1() {
         assertThrowsExactly(

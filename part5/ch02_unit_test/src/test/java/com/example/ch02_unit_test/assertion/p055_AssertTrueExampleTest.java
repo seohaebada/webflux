@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AssertTrueExampleTest {
+public class p055_AssertTrueExampleTest {
     @Test
     void shouldFail() {
         assertTrue(false);

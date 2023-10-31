@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AssertDoesNotThrowExampleTest {
+public class p080_AssertDoesNotThrowExampleTest {
     @Test
     void test1() {
         assertDoesNotThrow(

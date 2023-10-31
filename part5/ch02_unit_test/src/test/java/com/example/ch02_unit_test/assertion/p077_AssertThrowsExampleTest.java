@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class AssertThrowsExampleTest {
+public class p077_AssertThrowsExampleTest {
     @Test
     void test1() {
         assertThrows(

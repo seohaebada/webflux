@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-public class AssertAllExampleTest {
+public class p075_AssertAllExampleTest {
     @Test
     void test1() {
         assertAll(

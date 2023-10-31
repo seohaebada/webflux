@@ -8,7 +8,7 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 
-public class AssertTimeoutExampleTest {
+public class p082_AssertTimeoutExampleTest {
     @Test
     void test1() {
         var duration = Duration.ofSeconds(1);
