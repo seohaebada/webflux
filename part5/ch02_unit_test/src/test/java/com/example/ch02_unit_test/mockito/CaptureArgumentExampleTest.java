@@ -1,6 +1,6 @@
 package com.example.ch02_unit_test.mockito;
 
-import com.grizz.wooman.test.app.service.GreetingService;
+import com.example.ch02_unit_test.test.app.service.GreetingService;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
 public class CaptureArgumentExampleTest {
     @Test
     void captureArgument() {
-        GreetingService mocked = mock();
+        GreetingService mocked = mock(GreetingService.class);
 
         mocked.greeting("world");
         mocked.greeting("grizz");

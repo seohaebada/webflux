@@ -1,6 +1,6 @@
 package com.example.ch02_unit_test.mockito;
 
-import com.grizz.wooman.test.app.service.GreetingService;
+import com.example.ch02_unit_test.test.app.service.GreetingService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,7 +10,7 @@ import static org.mockito.Mockito.*;
 public class CallSpyExampleTest {
     @Test
     void test1() {
-        GreetingService spy = spy();
+        GreetingService spy = spy(GreetingService.class);
         verify(spy, never()).greeting(anyString());
 
         var greeting = spy.greeting("world");

@@ -1,6 +1,6 @@
 package com.example.ch02_unit_test.mockito;
 
-import com.grizz.wooman.test.app.service.GreetingService;
+import com.example.ch02_unit_test.test.app.service.GreetingService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ import static org.mockito.Mockito.mock;
 public class CreateMockExampleTest {
     @Test
     void createMock() {
-        GreetingService mocked = mock();
+        GreetingService mocked = mock(GreetingService.class);
 
         assertInstanceOf(GreetingService.class, mocked);
     }

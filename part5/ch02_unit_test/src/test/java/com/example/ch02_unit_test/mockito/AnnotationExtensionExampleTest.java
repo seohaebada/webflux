@@ -1,6 +1,6 @@
 package com.example.ch02_unit_test.mockito;
 
-import com.grizz.wooman.test.app.service.GreetingService;
+import com.example.ch02_unit_test.test.app.service.GreetingService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
