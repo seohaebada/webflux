@@ -1,6 +1,6 @@
 package com.example.ch02_unit_test.reactor;
 
-import com.grizz.wooman.test.TestToFail;
+import com.example.ch02_unit_test.TestToFail;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

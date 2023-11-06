@@ -6,12 +6,13 @@ import reactor.test.StepVerifier;
 import reactor.test.StepVerifierOptions;
 import reactor.util.context.Context;
 
-public class StepContextExampleTest {
+public class p190_StepContextExampleTest {
     @Test
     void test1() {
         var flux = Flux.range(0, 5);
 
         StepVerifier.create(flux)
+                // context 사용안함
                 .expectNoAccessibleContext()
                 .expectNextCount(5)
                 .verifyComplete();
@@ -23,6 +24,7 @@ public class StepContextExampleTest {
                 .contextWrite(Context.of("foo", "bar"));
 
         StepVerifier.create(flux)
+                // context 확인
                 .expectAccessibleContext()
                 .contains("foo", "bar").then()
                 .expectNextCount(5)
@@ -33,6 +35,7 @@ public class StepContextExampleTest {
     void test3() {
         var flux = Flux.range(0, 5);
 
+        // Options 사용함 (test2()와 결과는 똑같음)
         var options = StepVerifierOptions.create()
                 .withInitialContext(Context.of("foo", "bar"));
 
