@@ -13,6 +13,7 @@ public class p181_SimpleSubscriber<T> implements Subscriber<T> {
 
     /**
      * 지속적으로 요청을 하는게 아니라, 딱 한번 N개의 요청을 받고 그 이후로 값을 계속 받음
+     * Subscription : StrictSubscriber
      * @param s the {@link Subscription} that allows requesting data via {@link Subscription#request(long)}
      */
     @Override
@@ -22,6 +23,7 @@ public class p181_SimpleSubscriber<T> implements Subscriber<T> {
         log.info("request: {}", count);
     }
 
+    // FluxIterable publisher
     @SneakyThrows
     @Override
     public void onNext(T t) {
