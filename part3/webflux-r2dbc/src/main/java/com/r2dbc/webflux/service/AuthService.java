@@ -20,6 +20,7 @@ public class AuthService {
                 Criteria.where("token").is(token)
         );
 
+//        return entityTemplate.select()
         return entityTemplate.select(AuthEntity.class)
                 .matching(query)
                 .one()

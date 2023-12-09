@@ -26,7 +26,7 @@ public class UserService {
     private final R2dbcEntityTemplate entityTemplate;
 
     public Mono<User> findById(String userId) {
-        return userRepository.findById(new Long(userId))
+        return userRepository.findById(new Long(userId)) // Long 으로 변환
                 .flatMap(userEntity -> {
                     String imageId = userEntity.getProfileImageId();
 
