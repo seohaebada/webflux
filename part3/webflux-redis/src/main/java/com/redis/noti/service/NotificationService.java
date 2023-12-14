@@ -1,4 +1,4 @@
-package com.redis.service;
+package com.redis.noti.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;

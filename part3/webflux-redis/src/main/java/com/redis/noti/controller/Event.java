@@ -1,4 +1,4 @@
-package com.redis.controller;
+package com.redis.noti.controller;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
-package com.redis.controller;
+package com.redis.noti.controller;
 
-import com.redis.service.NotificationService;
+import com.redis.noti.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
